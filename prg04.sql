@@ -1,4 +1,4 @@
-#Chris Sheehan & Dan "The Man's" Howard
+#Chris Sheehan & Dan Howard
 #April 3, 2016
 #Programming Assignment 4
 
@@ -33,16 +33,15 @@ PRIMARY KEY (build, number)
 #Creates the table ReservedRooms
 #	with seq as the primary key
 CREATE TABLE Reserved_Rooms(
-seq INT NOT NULL,
-date VARCHAR(11),
+seq INT NOT NULL AUTO_INCREMENT,
+date DATE,
 begin INT,
 end INT,
 user_id INT,
-roomNum INT,
 build VARCHAR(10),
-#FOREIGN KEY (user_id) REFERENCES Users (id),
-#FOREIGN KEY (roomNum) REFERENCES Rooms (number),
-#FOREIGN KEY (build) REFERENCES Rooms (build),
+roomNum INT,
+FOREIGN KEY (user_id) REFERENCES Users (id),
+FOREIGN KEY (build) REFERENCES Rooms (build),
 PRIMARY KEY (seq)
 );
 
@@ -60,8 +59,8 @@ INSERT INTO Rooms VALUES
 #Inserts the following tuples into the Reserved_Rooms table
 INSERT INTO Reserved_Rooms VALUES
 #both ways of inputting date are wrong
-(1, "2016-03-20", 08, 09, 1, "PPHAC", 113),
-(2, "2016-04-01", 08, 10, 2, "PPHAC", 114);
+(0, "2016-03-20", 08, 09, 1, "PPHAC", 113),
+(0, "2016-04-01", 08, 10, 2, "PPHAC", 114);
 
 #Creates View, ReservationsView
 #	Lists all reservations and user names
@@ -81,3 +80,4 @@ CREATE VIEW ReservationsView AS
 
 
 #Part 2 - Room Reservation System
+#prg04.py
